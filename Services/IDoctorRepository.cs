@@ -1,4 +1,5 @@
-﻿using DoctorWho.Web.DtoModels;
+﻿
+using DoctorWho.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,11 @@ namespace DoctorWho.Web
 {
     public interface IDoctorRepository
     {
-        Task<IEnumerable<DoctorDto>> GetDoctorsAsync();
-        Task InsertDoctorAsync(int DoctorId,DoctorForInsertDto doctor);
-        Task UpdateDoctorAsync(int DoctorId,DoctorForUpdateDto doctor);
-        void DeleteDoctorAsync(int DoctorId);
+        Task<IEnumerable<Doctor>> GetDoctorsAsync();
+        Task InsertDoctorAsync(Doctor doctor);
+        void DeleteDoctorAsync(Doctor doctor);
         Task<bool> DoctorExistsAsync(int DoctorId);
+        Task<bool> SaveChangesAsync();
+        Task<Doctor?> GetDoctorAsync(int DoctorId);
     }
 }

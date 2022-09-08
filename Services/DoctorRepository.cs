@@ -1,7 +1,8 @@
 ﻿using DoctorWho.Db;
 using DoctorWho.Web.DtoModels;
+using Microsoft.EntityFrameworkCore;
 
-namespace DoctorWho.Web.Services
+namespace DoctorWho.Web
 {
     public class DoctorRepository : IDoctorRepository
     {
@@ -11,29 +12,33 @@ namespace DoctorWho.Web.Services
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public void DeleteDoctorAsync(int DoctorId)
-        {
-            throw new NotImplementedException();
+        public void DeleteDoctorAsync(Doctor doctor)
+        { 
+                _context.doctors.Remove(doctor);  
         }
 
-        public Task<bool> DoctorExistsAsync(int DoctorId)
+        public async Task<bool> DoctorExistsAsync(int DoctorId)
         {
-            throw new NotImplementedException();
+            return await _context.doctors.Where(d => d.DoctorId == DoctorId).FirstOrDefaultAsync() is not null;
         }
 
-        public Task<IEnumerable<DoctorDto>> GetDoctorsAsync()
+        public async Task<IEnumerable<Doctor>> GetDoctorsAsync()
         {
-            throw new NotImplementedException();
+            return await _context.doctors.ToListAsync();
+        }
+        public async Task<Doctor?> GetDoctorAsync(int DoctorId)
+        {
+
+            return await _context.doctors.Where(d => d.DoctorId == DoctorId).FirstOrDefaultAsync();
         }
 
-        public Task InsertDoctorAsync(int DoctorId, DoctorForInsertDto doctor)
+        public async Task InsertDoctorAsync(Doctor doctor)
         {
-            throw new NotImplementedException();
+             await _context.doctors.AddAsync(doctor);      
         }
-
-        public Task UpdateDoctorAsync(int DoctorId, DoctorForUpdateDto doctor)
+        public async Task<bool> SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            return (await _context.SaveChangesAsync() >= 0);
         }
     }
 }

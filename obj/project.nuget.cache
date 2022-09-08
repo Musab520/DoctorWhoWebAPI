@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "fu1gdkA5jTEJDWFvlq4O0+wehf7xhcYOITLfLqP01srKZNLB5n9N3EKbJFROxJJVCLHkcaMd68lTuUINMFPcIA==",
+  "dgSpecHash": "wqgkLZEv8vlIaozzGYwOGv+dUS7eJaZAruAMPCqb80JMNE7oI9qNQtt1+GzpLPvCMaFN3gjryCOkeL+lpjPdAg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\C#Practice\\DoctorWhoWeb\\DoctorWho.Web\\DoctorWho.Web.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Admin\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation\\11.2.1\\fluentvalidation.11.2.1.nupkg.sha512",
