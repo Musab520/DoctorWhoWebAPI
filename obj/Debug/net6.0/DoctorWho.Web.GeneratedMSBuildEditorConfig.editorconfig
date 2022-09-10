@@ -35,6 +35,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Admin/C\#Practice/DoctorWhoWeb/DoctorWho.Web/Views/Episodes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBpc29kZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/C\#Practice/DoctorWhoWeb/DoctorWho.Web/Views/Episodes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBpc29kZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/C\#Practice/DoctorWhoWeb/DoctorWho.Web/Views/Episodes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBpc29kZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/C\#Practice/DoctorWhoWeb/DoctorWho.Web/Views/Episodes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBpc29kZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/C\#Practice/DoctorWhoWeb/DoctorWho.Web/Views/Episodes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBpc29kZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Admin/C\#Practice/DoctorWhoWeb/DoctorWho.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
