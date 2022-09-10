@@ -2,9 +2,9 @@
 using FluentValidation;
 namespace DoctorWho.Web.Validators
 {
-    public class EpisodeForInsertValidator :AbstractValidator<EpisodeForInsertDto>
+    public class EpisodeForInsertDtoValidator :AbstractValidator<EpisodeForInsertDto>
     {
-        public EpisodeForInsertValidator()
+        public EpisodeForInsertDtoValidator()
         {
             RuleFor(episode=>episode.AuthorId).NotEmpty().NotEqual(0);
             RuleFor(episode => episode.DoctorId).NotEmpty().NotEqual(0);

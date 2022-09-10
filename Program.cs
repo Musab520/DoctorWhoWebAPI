@@ -1,5 +1,6 @@
 using DoctorWho.Db;
 using DoctorWho.Web;
+using DoctorWho.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DoctorWhoCoreDbContext>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+builder.Services.AddScoped<IEpisodeRepository, EpisodeRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
