@@ -59,7 +59,7 @@ namespace DoctorWho.Web.Controllers
             if (doctorValidationResult.IsValid)
             {
                 
-                Doctor? doctorFound = _doctorRepository.GetDoctorAsync(DoctorId).Result;
+                Doctor? doctorFound = await _doctorRepository.GetDoctorAsync(DoctorId);
                 if (doctorFound==null)
                 {
                     return NotFound();

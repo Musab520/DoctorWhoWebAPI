@@ -6,157 +6,35 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DoctorWho.Db;
+using DoctorWho.Web.DtoModels;
+using DoctorWho.Web.Services;
+using AutoMapper;
 
 namespace DoctorWho.Web.Controllers
 {
+    [ApiController]
+    [Route("api/authors")]
     public class AuthorsController : Controller
     {
-        private readonly DoctorWhoCoreDbContext _context;
+        private readonly IAuthorRepository _authorRepository;
+        private readonly IMapper _mapper;
 
-        public AuthorsController(DoctorWhoCoreDbContext context)
+        public AuthorsController(IAuthorRepository authorRepository,IMapper mapper)
         {
-            _context = context;
+            _authorRepository = authorRepository ?? throw new ArgumentNullException();
+            _mapper = mapper ?? throw new ArgumentNullException();
         }
-
-        // GET: Authors
-        public async Task<IActionResult> Index()
+        [HttpPut("{authorId}")]
+        public async Task<ActionResult> UpdateAuthorAsync(int AuthorId,AuthorForUpdateDto authorForUpdateDto)
         {
-              return _context.authors != null ? 
-                          View(await _context.authors.ToListAsync()) :
-                          Problem("Entity set 'DoctorWhoCoreDbContext.authors'  is null.");
-        }
-
-        // GET: Authors/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.authors == null)
-            {
-                return NotFound();
-            }
-
-            var author = await _context.authors
-                .FirstOrDefaultAsync(m => m.AuthorId == id);
+            Author? author = await _authorRepository.GetAuthorAsync(AuthorId);
             if (author == null)
             {
-                return NotFound();
+               return NotFound();
             }
-
-            return View(author);
-        }
-
-        // GET: Authors/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Authors/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AuthorId,AuthorName")] Author author)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(author);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(author);
-        }
-
-        // GET: Authors/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.authors == null)
-            {
-                return NotFound();
-            }
-
-            var author = await _context.authors.FindAsync(id);
-            if (author == null)
-            {
-                return NotFound();
-            }
-            return View(author);
-        }
-
-        // POST: Authors/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AuthorId,AuthorName")] Author author)
-        {
-            if (id != author.AuthorId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(author);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AuthorExists(author.AuthorId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(author);
-        }
-
-        // GET: Authors/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.authors == null)
-            {
-                return NotFound();
-            }
-
-            var author = await _context.authors
-                .FirstOrDefaultAsync(m => m.AuthorId == id);
-            if (author == null)
-            {
-                return NotFound();
-            }
-
-            return View(author);
-        }
-
-        // POST: Authors/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.authors == null)
-            {
-                return Problem("Entity set 'DoctorWhoCoreDbContext.authors'  is null.");
-            }
-            var author = await _context.authors.FindAsync(id);
-            if (author != null)
-            {
-                _context.authors.Remove(author);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool AuthorExists(int id)
-        {
-          return (_context.authors?.Any(e => e.AuthorId == id)).GetValueOrDefault();
+            _mapper.Map(authorForUpdateDto, author);
+            await _authorRepository.SaveChangesAsync();
+            return NoContent();
         }
     }
 }
