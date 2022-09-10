@@ -2,8 +2,8 @@
 {
     public class EpisodeForInsertDto
     {
-        public int? SeriesNumber { get; set; }
-        public int? EpisodeNumber { get; set; }
+        public int SeriesNumber { get; set; }
+        public int EpisodeNumber { get; set; }
         public string? EpisodeType { get; set; }
         public string? Title { get; set; }
         public DateTime? EpisodeDate { get; set; }
